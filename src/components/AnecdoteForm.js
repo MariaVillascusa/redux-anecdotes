@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { createAnecdote } from '../reducers/anecdoteReducer'
 
-
 const AnecdoteForm =()=>{
     const dispatch = useDispatch()
 
@@ -20,6 +19,7 @@ const AnecdoteForm =()=>{
                 <div><input name="anecdote" /></div>
                 <button>create</button>
             </form>
+            <hr/>
         </div>
     )
 }
