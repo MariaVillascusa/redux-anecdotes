@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { createAnecdote } from '../reducers/anecdoteReducer'
+import { createNotification, resetNotification } from '../reducers/notificationReducer'
 
-const AnecdoteForm =()=>{
+const AnecdoteForm = () => {
     const dispatch = useDispatch()
 
     const addAnecdote = (e) => {
@@ -10,6 +11,14 @@ const AnecdoteForm =()=>{
         const content = e.target.anecdote.value
         e.target.anecdote.value = ''
         dispatch(createAnecdote(content))
+        setNotification(content)
+    }
+
+    const setNotification = (content) => {
+        dispatch(createNotification(content))
+        setTimeout(() => {
+            dispatch(resetNotification())
+        }, 5000)
     }
 
     return (
@@ -19,7 +28,7 @@ const AnecdoteForm =()=>{
                 <div><input name="anecdote" /></div>
                 <button>create</button>
             </form>
-            <hr/>
+            <hr />
         </div>
     )
 }
