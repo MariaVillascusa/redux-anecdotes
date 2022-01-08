@@ -28,7 +28,6 @@ const AnecdoteForm = () => {
                 <div><input name="anecdote" /></div>
                 <button>create</button>
             </form>
-            <hr />
         </div>
     )
 }

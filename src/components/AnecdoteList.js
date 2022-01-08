@@ -2,9 +2,15 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { voteAnecdote } from '../reducers/anecdoteReducer'
 import { voteNotification, resetNotification } from '../reducers/notificationReducer'
+
 export default function AnecdoteList() {
-    let anecdotes = useSelector(state => state.anecdotes).sort((a, b) => b.votes - a.votes)
+
     const dispatch = useDispatch()
+    let filter = useSelector(state => state.filter)
+    let anecdotes = useSelector(state => state.anecdotes).sort((a, b) => b.votes - a.votes)
+
+    anecdotes = filter.length === 0 ? anecdotes
+        : anecdotes.filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLocaleLowerCase()))
 
     const vote = (id, content) => {
         dispatch(voteAnecdote(id))
@@ -31,6 +37,7 @@ export default function AnecdoteList() {
                     </div>
                 </div>
             )}
+            <hr />
         </div>
     )
 }
