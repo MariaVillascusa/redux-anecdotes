@@ -6,7 +6,10 @@ import { voteNotification, resetNotification } from '../reducers/notificationRed
 export default function AnecdoteList() {
 
     const dispatch = useDispatch()
-    let filter = useSelector(state => state.filter)
+    let filter = useSelector(state => {
+        return state.filter
+    })
+
     let anecdotes = useSelector(state => state.anecdotes).sort((a, b) => b.votes - a.votes)
 
     anecdotes = filter.length === 0 ? anecdotes
