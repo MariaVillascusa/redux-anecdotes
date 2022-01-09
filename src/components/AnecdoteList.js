@@ -29,6 +29,7 @@ export default function AnecdoteList() {
 
     return (
         <div>
+            {console.log(anecdotes)}
             {anecdotes.map(anecdote =>
                 <div key={anecdote.id}>
                     <div>

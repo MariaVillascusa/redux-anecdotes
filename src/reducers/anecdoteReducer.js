@@ -37,13 +37,9 @@ export const voteAnecdote = (id) => {
 }
 
 export const createAnecdote = (content) => {
-
   return {
     type: '@anecdotes/create',
-    anecdote: {
-      content,
-      votes: 0
-    }
+    anecdote: content,
   }
 }
 
