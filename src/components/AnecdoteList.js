@@ -15,9 +15,9 @@ export default function AnecdoteList() {
     anecdotes = filter.length === 0 ? anecdotes
         : anecdotes.filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLocaleLowerCase()))
 
-    const vote = (id, content) => {
-        dispatch(voteAnecdote(id))
-        setNotification(content)
+    const vote = (anecdote) => {
+        dispatch(voteAnecdote(anecdote))
+        setNotification(anecdote.content)
     }
 
     const setNotification = (content) => {
@@ -36,7 +36,7 @@ export default function AnecdoteList() {
                     </div>
                     <div>
                         has {anecdote.votes}
-                        <button onClick={() => vote(anecdote.id, anecdote.content)}>vote</button>
+                        <button onClick={() => vote(anecdote)}>vote</button>
                     </div>
                 </div>
             )}
