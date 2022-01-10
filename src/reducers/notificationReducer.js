@@ -9,13 +9,20 @@ const reducer = (state = '', action) => {
     }
 }
 
+let timeoutID = undefined;
 export const setNotification = (content, segs) => {
+
     return async (dispatch) => {
         dispatch({
             type: '@notification/set',
-            content
+            content,
+
         })
-        setTimeout(() => {
+        if (timeoutID !== undefined) {
+            clearTimeout(timeoutID)
+        }
+        console.log(timeoutID)
+        timeoutID = setTimeout(() => {
             dispatch(resetNotification())
         }, segs * 1000)
     }
